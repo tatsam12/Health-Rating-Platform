@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - NutriScore Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-page">
+    <nav class="navbar admin-navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="dashboard.html" class="logo">NutriScore Admin</a>
+                <div class="nav-links">
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="products.html" class="active">Products</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="brands.html">Brands</a>
+                    <a href="users.html">Users</a>
+                    <a href="../main.html" class="view-site">View Site</a>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <div class="container">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="products.html" class="active">Products</a>
+                <a href="categories.html">Categories</a>
+                <a href="brands.html">Brands</a>
+                <a href="users.html">Users</a>
+                <a href="../main.html">View Site</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="admin-header">
+                <h1>Add New Product</h1>
+                <div class="admin-user">
+                    <span id="admin-name">Admin User</span>
+                    <button id="logout-btn" class="logout-btn">Logout</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <form id="add-product-form" class="admin-form">
+                        <div class="form-tabs">
+                            <button type="button" class="tab-btn active" data-tab="basic-info">Basic Info</button>
+                            <button type="button" class="tab-btn" data-tab="nutrition">Nutrition</button>
+                            <button type="button" class="tab-btn" data-tab="ingredients">Ingredients</button>
+                            <button type="button" class="tab-btn" data-tab="serving">Serving Recommendation</button>
+                            <button type="button" class="tab-btn" data-tab="certifications">Certifications</button>
+                        </div>
+
+                        <div class="tab-content active" id="basic-info-tab">
+                            <h2>Basic Information</h2>
+                            
+                            <div class="form-group">
+                                <label for="product-name">Product Name*</label>
+                                <input type="text" id="product-name" name="name" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="product-category">Category*</label>
+                                    <select id="product-category" name="category_id" required>
+                                        <option value="">Select Category</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="product-brand">Brand*</label>
+                                    <select id="product-brand" name="brand_id" required>
+                                        <option value="">Select Brand</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="product-price">Price ($)*</label>
+                                    <input type="number" id="product-price" name="price" step="0.01" min="0" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="product-health-score">Health Score (0-100)*</label>
+                                    <input type="number" id="product-health-score" name="health_score" min="0" max="100" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="product-description">Description*</label>
+                                <textarea id="product-description" name="description" rows="4" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="product-image">Product Image</label>
+                                <input type="file" id="product-image" name="image">
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="button next-tab" data-next="nutrition">Next: Nutrition</button>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="nutrition-tab">
+                            <h2>Nutrition Information</h2>
+                            
+                            <div class="form-group">
+                                <label for="serving-size">Serving Size*</label>
+                                <input type="text" id="serving-size" name="serving_size" placeholder="e.g., 30g" required>
+                            </div>
+                            
+                            <div class="nutrients-container">
+                                <h3>Nutrients</h3>
+                                <p class="form-help">Add the nutritional information per serving.</p>
+                                
+                                <div id="nutrients-list">
+                                    <div class="nutrient-item">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Nutrient</label>
+                                                <select name="nutrients[0][id]" required>
+                                                    <option value="">Select Nutrient</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Amount</label>
+                                                <input type="number" name="nutrients[0][amount]" step="0.01" min="0" required>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>% Daily Value</label>
+                                                <input type="number" name="nutrients[0][daily_value]" step="0.1" min="0">
+                                            </div>
+                                            
+                                            <button type="button" class="remove-btn" disabled>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button type="button" id="add-nutrient-btn" class="button secondary-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                    Add Nutrient
+                                </button>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="button secondary-button prev-tab" data-prev="basic-info">Previous</button>
+                                <button type="button" class="button next-tab" data-next="ingredients">Next: Ingredients</button>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="ingredients-tab">
+                            <h2>Ingredients & Allergens</h2>
+                            
+                            <div class="form-group">
+                                <label for="ingredients">Ingredients List*</label>
+                                <textarea id="ingredients" name="ingredients" rows="4" required></textarea>
+                                <p class="form-help">List all ingredients separated by commas.</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="allergens">Allergen Information</label>
+                                <textarea id="allergens" name="allergens" rows="4"></textarea>
+                                <p class="form-help">List any allergens or cross-contamination warnings.</p>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="button secondary-button prev-tab" data-prev="nutrition">Previous</button>
+                                <button type="button" class="button next-tab" data-next="serving">Next: Serving Recommendation</button>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="serving-tab">
+                            <h2>Serving Recommendation</h2>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="min-serving">Minimum Serving</label>
+                                    <input type="number" id="min-serving" name="min_serving" step="0.01" min="0">
+                                    <p class="form-help">Minimum recommended serving size (optional)</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="recommended-serving">Recommended Serving*</label>
+                                    <input type="number" id="recommended-serving" name="recommended_serving" step="0.01" min="0" required>
+                                    <p class="form-help">Optimal serving size</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="max-serving">Maximum Serving</label>
+                                    <input type="number" id="max-serving" name="max_serving" step="0.01" min="0">
+                                    <p class="form-help">Maximum recommended serving size (optional)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="recommendation-level">Recommendation Level*</label>
+                                <select id="recommendation-level" name="recommendation_level" required>
+                                    <option value="">Select Level</option>
+                                    <option value="Highly Recommended">Highly Recommended</option>
+                                    <option value="Recommended">Recommended</option>
+                                    <option value="Moderate">Moderate</option>
+                                    <option value="Limited">Limited</option>
+                                    <option value="Not Recommended">Not Recommended</option>
+                                </select>
+                            </div>
+                            
+                            <div class="serving-meter-container">
+                                <h3>Serving Recommendation Meter</h3>
+                                <div class="serving-meter">
+                                    <div class="meter-scale">
+                                        <div class="meter-marker highly-recommended">Highly Recommended</div>
+                                        <div class="meter-marker recommended">Recommended</div>
+                                        <div class="meter-marker moderate">Moderate</div>
+                                        <div class="meter-marker limited">Limited</div>
+                                        <div class="meter-marker not-recommended">Not Recommended</div>
+                                    </div>
+                                    <div class="meter-needle" id="recommendation-needle"></div>
+                                </div>
+                                <p class="form-help">The meter shows the recommendation level visually. Left side is healthier, right side is less healthy.</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="recommendation-notes">Notes</label>
+                                <textarea id="recommendation-notes" name="recommendation_notes" rows="3"></textarea>
+                                <p class="form-help">Additional notes about serving recommendations</p>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="button secondary-button prev-tab" data-prev="ingredients">Previous</button>
+                                <button type="button" class="button next-tab" data-next="certifications">Next: Certifications</button>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="certifications-tab">
+                            <h2>Certifications</h2>
+                            
+                            <div class="certifications-container">
+                                <p class="form-help">Select all certifications that apply to this product.</p>
+                                
+                                <div class="checkbox-grid" id="certifications-list">
+                                    <!-- Certifications will be loaded dynamically -->
+                                    <div class="loading-spinner"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="button secondary-button prev-tab" data-prev="serving">Previous</button>
+                                <button type="submit" class="button primary-button">Save Product</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/navigation.js"></script>
+    <script src="../js/admin/add-product.js"></script>
+</body>
+</html>
+

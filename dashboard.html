@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - NutriScore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="main.html" class="logo">NutriScore</a>
+                <div class="nav-links">
+                    <a href="dashboard.html" class="active">Dashboard</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="search.html">Search</a>
+                    <a href="profile.html">Profile</a>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <div class="container">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="categories.html">Categories</a>
+                <a href="search.html">Search</a>
+                <a href="profile.html">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <h1 class="page-title">Food Health Dashboard</h1>
+            
+            <div class="stats-cards">
+                <div class="card stat-card">
+                    <div class="card-content">
+                        <h3>Total Products</h3>
+                        <div class="stat-value">2,345</div>
+                        <p class="stat-description">Across all categories</p>
+                    </div>
+                </div>
+                
+                <div class="card stat-card">
+                    <div class="card-content">
+                        <h3>Top Rated Category</h3>
+                        <div class="stat-value">Whole Grains</div>
+                        <p class="stat-description">Average rating: 4.7/5</p>
+                    </div>
+                </div>
+                
+                <div class="card stat-card">
+                    <div class="card-content">
+                        <h3>Recently Viewed</h3>
+                        <div class="stat-value">12 Products</div>
+                        <p class="stat-description">In the last 7 days</p>
+                    </div>
+                </div>
+            </div>
+            
+            <section class="categories-section">
+                <h2>Browse Categories</h2>
+                <div class="categories-grid" id="categories-grid">
+                    <!-- Categories will be loaded dynamically -->
+                    <div class="loading-spinner"></div>
+                </div>
+            </section>
+            
+            <section class="products-section">
+                <div class="section-header">
+                    <h2>Popular Products</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                            Filter
+                        </button>
+                        <button class="sort-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                            Sort
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="all">All</button>
+                    <button class="tab-btn" data-tab="high-rated">Highest Rated</button>
+                    <button class="tab-btn" data-tab="low-price">Lowest Price</button>
+                    <button class="tab-btn" data-tab="popular-brands">Popular Brands</button>
+                </div>
+                
+                <div class="tab-content active" id="all-tab">
+                    <div class="products-grid" id="products-grid">
+                        <!-- Products will be loaded dynamically -->
+                        <div class="loading-spinner"></div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="high-rated-tab">
+                    <div class="products-grid" id="high-rated-products">
+                        <!-- High rated products will be loaded dynamically -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="low-price-tab">
+                    <div class="products-grid" id="low-price-products">
+                        <!-- Low price products will be loaded dynamically -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="popular-brands-tab">
+                    <div class="products-grid" id="popular-brands-products">
+                        <!-- Popular brand products will be loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
+

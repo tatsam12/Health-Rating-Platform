@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - NutriScore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="product-page">
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="index.html" class="logo">NutriScore</a>
+                <div class="nav-links">
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="search.html">Search</a>
+                    <a href="profile.html">Profile</a>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <div class="container">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="categories.html">Categories</a>
+                <a href="search.html">Search</a>
+                <a href="profile.html">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="back-link">
+                <a href="dashboard.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Back to products
+                </a>
+            </div>
+            
+            <div class="product-detail-container">
+                <div class="product-sidebar">
+                    <div class="card product-card">
+                        <div class="product-image">
+                            <img id="product-image" src="assets/placeholder-product.jpg" alt="Product Image">
+                        </div>
+                        <div class="card-content">
+                            <div class="product-header">
+                                <div>
+                                    <h1 id="product-name">Product Name</h1>
+                                    <p id="product-brand" class="product-brand">Brand Name</p>
+                                </div>
+                                <div class="product-rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="star-icon"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <span id="product-rating">4.5</span>
+                                </div>
+                            </div>
+                            
+                            <p id="product-description" class="product-description">Product description will be displayed here.</p>
+                            
+                            <div class="product-meta">
+                                <span id="product-category" class="product-category">Category</span>
+                                <span id="product-price" class="product-price">$0.00</span>
+                            </div>
+                            
+                            <div class="health-score-container">
+                                <div class="health-score-header">
+                                    <span>Health Score</span>
+                                    <span id="health-score-value" class="health-score-value">85/100</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div id="health-score-progress" class="progress-bar-fill" style="width: 85%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="serving-recommendation" id="serving-recommendation">
+                                <h3>Serving Recommendation</h3>
+                                <div class="serving-meter">
+                                    <div class="meter-scale">
+                                        <div class="meter-marker highly-recommended">Highly Recommended</div>
+                                        <div class="meter-marker recommended">Recommended</div>
+                                        <div class="meter-marker moderate">Moderate</div>
+                                        <div class="meter-marker limited">Limited</div>
+                                        <div class="meter-marker not-recommended">Not Recommended</div>
+                                    </div>
+                                    <div class="meter-needle" id="product-recommendation-needle"></div>
+                                </div>
+                                <div class="serving-details">
+                                    <p><strong>Recommended Serving:</strong> <span id="recommended-serving">30g</span></p>
+                                    <p><strong>Level:</strong> <span id="recommendation-level">Recommended</span></p>
+                                    <p id="serving-notes" class="serving-notes"></p>
+                                </div>
+                            </div>
+                            
+                            <div class="product-actions">
+                                <button class="button">Compare</button>
+                                <button class="icon-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                                </button>
+                                <button class="icon-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <div class="tabs-container">
+                        <div class="tabs">
+                            <button class="tab-btn active" data-tab="nutrition">Nutrition Facts</button>
+                            <button class="tab-btn" data-tab="ingredients">Ingredients</button>
+                            <button class="tab-btn" data-tab="reviews">Reviews</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="nutrition-tab">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h2>Nutrition Facts</h2>
+                                    <p id="serving-size" class="serving-size">Serving Size: 30g</p>
+                                    
+                                    <div class="nutrition-header">
+                                        <span class="nutrition-header-text">Amount Per Serving</span>
+                                    </div>
+                                    
+                                    <div class="nutrients-list" id="nutrients-list">
+                                        <!-- Nutrients will be loaded dynamically -->
+                                    </div>
+                                    
+                                    <p class="nutrition-footnote">* Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="ingredients-tab">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h2>Ingredients</h2>
+                                    <p id="ingredients-list" class="ingredients-text">Ingredients will be displayed here.</p>
+                                    
+                                    <h3>Allergen Information</h3>
+                                    <p id="allergens-list" class="allergens-text">Allergen information will be displayed here.</p>
+                                    
+                                    <h3>Certifications</h3>
+                                    <div class="certifications" id="certifications-list">
+                                        <!-- Certifications will be loaded dynamically -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="reviews-tab">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="reviews-header">
+                                        <h2>Customer Reviews</h2>
+                                        <button class="button">Write a Review</button>
+                                    </div>
+                                    
+                                    <div class="reviews-list" id="reviews-list">
+                                        <!-- Reviews will be loaded dynamically -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <section class="similar-products-section">
+                        <h2>Similar Products</h2>
+                        <div class="similar-products-grid" id="similar-products">
+                            <!-- Similar products will be loaded dynamically -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>
+

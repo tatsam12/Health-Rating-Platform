@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - NutriScore</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-page">
+    <nav class="navbar admin-navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="dashboard.html" class="logo">NutriScore Admin</a>
+                <div class="nav-links">
+                    <a href="dashboard.html" class="active">Dashboard</a>
+                    <a href="products.html">Products</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="brands.html">Brands</a>
+                    <a href="users.html">Users</a>
+                    <a href="../index.html" class="view-site">View Site</a>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <div class="container">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="products.html">Products</a>
+                <a href="categories.html">Categories</a>
+                <a href="brands.html">Brands</a>
+                <a href="users.html">Users</a>
+                <a href="../index.html">View Site</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="admin-header">
+                <h1>Admin Dashboard</h1>
+                <div class="admin-user">
+                    <span id="admin-name">Admin User</span>
+                    <button id="logout-btn" class="logout-btn">Logout</button>
+                </div>
+            </div>
+
+            <div class="stats-cards">
+                <div class="card stat-card">
+                    <div class="card-content">
+                        <h3>Total Products</h3>
+                        <div class="stat-value" id="total-products">0</div>
+                        <p class="stat-description">Across all categories</p>
+                    </div>
+                </div>
+                
+                <div class="card stat-card">
+                    <div class="card-content">
+                        <h3>Total Categories</h3>
+                        <div class="stat-value" id="total-categories">0</div>
+                    </div>
+                </div>
+                
+                <div class="card stat-card">
+                    <div class="card-content">
+                        <h3>Total Brands</h3>
+                        <div class="stat-value" id="total-brands">0</div>
+                    </div>
+                </div>
+                
+                <div class="card stat-card">
+                    <div class="card-content">
+                        <h3>Registered Users</h3>
+                        <div class="stat-value" id="total-users">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-buttons">
+                    <a href="add-product.html" class="button primary-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        Add New Product
+                    </a>
+                    <a href="add-category.html" class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        Add Category
+                    </a>
+                    <a href="add-brand.html" class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        Add Brand
+                    </a>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h2>Recent Activity</h2>
+                <div class="card">
+                    <div class="card-content">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Item</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activity-table">
+                                <tr>
+                                    <td colspan="3" class="text-center">Loading activity...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/navigation.js"></script>
+    <script src="../js/admin/dashboard.js"></script>
+</body>
+</html>
+
