@@ -58,7 +58,7 @@ try {
 } catch (PDOException $e) {
     // Database error
     http_response_code(500);
-    echo json_encode(['error' => 'Server error']);
+    echo json_encode(['error' => 'Server error ' . $e->getMessage()]);
 
 
     // Log the error (in a real app)

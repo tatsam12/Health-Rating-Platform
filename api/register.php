@@ -5,9 +5,9 @@ header("Content-Type: application/json");
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "mysql";
 $dbname = "qualitybites";
-$port = 3307;
+$port = 3306;
 
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 

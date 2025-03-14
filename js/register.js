@@ -70,12 +70,38 @@ document.addEventListener("DOMContentLoaded", () => {
       buttonText.textContent = "Creating account..."
       spinner.classList.remove("hidden")
 
-
-      // Simulate API call
-      setTimeout(() => {
-        // For demo purposes, always succeed
-        window.location.href = "main.html"
-      }, 1500)
+      // Make API call to register.php
+      fetch('api/register.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          fullname: fullname,
+          email: email,
+          password: password,
+          confirm_password: confirmPassword
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          window.location.href = "main.html";
+        } else {
+          registerError.textContent = data.message;
+          registerError.classList.remove("hidden");
+        }
+      })
+      .catch(error => {
+        registerError.textContent = "An error occurred. Please try again.";
+        registerError.classList.remove("hidden");
+      })
+      .finally(() => {
+        // Reset loading state
+        registerButton.disabled = false;
+        buttonText.textContent = "Register";
+        spinner.classList.add("hidden");
+      });
     })
   })
   
